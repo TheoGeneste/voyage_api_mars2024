@@ -2,6 +2,7 @@ const express = require('express');
 const clientRoutes = require('./Routes/ClientRoutes');
 const categorieRoutes = require('./Routes/CategorieRoutes');
 const destinationRoutes = require('./Routes/DestinationRoutes');
+const paiementRoutes = require('./Routes/PaiementRoutes');
 const app = express();
 const port = 3001;
 // Précise que notre API fonctionne avec des fichiers JSON
@@ -18,6 +19,7 @@ app.get('/hello', (request, result) => {
 app.use('/clients', clientRoutes);
 app.use('/categories', categorieRoutes);
 app.use('/destinations', destinationRoutes);
+app.use('/paiements', paiementRoutes);
 
 // Premier parametre le port sur lequel le server va écouté
 // Deuxieme parametre une function fleché qui est faite au lancement uniquement du server

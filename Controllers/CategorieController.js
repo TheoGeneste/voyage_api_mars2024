@@ -10,6 +10,16 @@ class CategorieController{
             result.json({error : "Une erreur est survenue lors de la récupération des catégories."})
         }
     }
+
+    async getCategoerieById(request, result){
+        try {
+            const categorie = await CategorieService.getCategorieByID(request.params.id);
+            result.json(categorie);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la récupération de la catégorie"})
+        }
+    }
 }
 
 module.exports = new CategorieController()

@@ -10,6 +10,16 @@ class ReservationController{
             result.json({error : "Une erreur est survenue lors de la récupération des réservations"})
         }
     }
+
+    async getReservationByID(request, result){
+        try {
+            const reservation = await ReservationService.getReservationByID(request.params.id);
+            result.json(reservation);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la récupération de la réservation"})
+        }
+    }
 }
 
 module.exports = new ReservationController();

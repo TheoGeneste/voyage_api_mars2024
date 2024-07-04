@@ -20,6 +20,16 @@ class ReservationController{
             result.json({error : "Une erreur est survenue lors de la récupération de la réservation"})
         }
     }
+
+    async addReservation(request, result){
+        try {
+            const reservation = await ReservationService.addReservation(request.body);
+            result.json(reservation);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de l'ajout de la réservation"})
+        }
+    }
 }
 
 module.exports = new ReservationController();

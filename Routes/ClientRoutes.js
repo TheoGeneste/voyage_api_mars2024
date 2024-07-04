@@ -6,5 +6,5 @@ const router = express.Router();
 
 router.get("/", (request, result) => {ClientController.getAllClient(request, result)});
 router.get("/:clientID", (request, result) => {ClientController.getClientByID(request, result)});
-
+router.post("/", (request, result) =>{ClientController.addClient(request,result)});
 module.exports = router;

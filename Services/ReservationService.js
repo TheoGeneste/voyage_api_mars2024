@@ -9,6 +9,10 @@ class ReservationService{
     async getReservationByID(reservationID){
         return await Reservation.findByPk(reservationID);
     }
+
+    async addReservation(reservation){
+        return await Reservation.create(reservation);
+    }
 }
 
 module.exports = new ReservationService();

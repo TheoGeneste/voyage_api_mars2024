@@ -21,6 +21,16 @@ class DestinationController {
             result.json({error : "Une erreur est survenue lors de la récupération de la destination"})
         }
     }
+
+    async addDestination(request, result){
+        try {
+            const destination = await DestinationService.addDestination(request.body);
+            result.json(destination);
+        } catch (error) {
+            result.status(500)
+            result.json({error : "Une erreur est survenue lors de l'ajout de la destination"})
+        }
+    }
 }
 
 module.exports = new DestinationController();

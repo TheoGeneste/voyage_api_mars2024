@@ -8,6 +8,10 @@ class PaiementService {
     async getPaiementByID(paiementID){
         return await Paiement.findByPk(paiementID);
     }
+
+    async addPaiement(paiement){
+        return await Paiement.create(paiement);
+    }
 }
 
 module.exports = new PaiementService();

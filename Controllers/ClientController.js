@@ -42,6 +42,16 @@ class ClientController {
         }
     }
 
+    async deleteClient(request, result){
+        try {
+            const client = await ClientService.deleteClient(request.params.id);
+            result.json(client);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la suppresion du client"})
+        }
+    }
+
 }
 
 module.exports = new ClientController();

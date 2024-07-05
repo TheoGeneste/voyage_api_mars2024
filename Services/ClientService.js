@@ -21,6 +21,10 @@ class ClientService {
             }
         })
     }
+
+    async deleteClient(id){
+        return await Client.destroy({where : {CL_ID : id}})
+    }
 }
 
 module.exports = new ClientService();

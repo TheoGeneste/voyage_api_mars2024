@@ -40,6 +40,16 @@ class ReservationController{
             result.json({error : "Une erreur est survenue lors de la modification de la réservation"})
         }
     }
+
+    async deleteReservation(request, result){
+        try {
+            const reservation = await ReservationService.deleteReservation(request.params.id);
+            result.json(reservation);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la suppression de la réservation"})
+        }
+    }
 }
 
 module.exports = new ReservationController();

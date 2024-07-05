@@ -7,5 +7,6 @@ router.get('/', (request, result) => {ReservationController.getAllReservation(re
 router.get('/:id', (request, result) => {ReservationController.getReservationByID(request, result)});
 router.post('/', (request, result) => {ReservationController.addReservation(request, result)});
 router.patch('/:id', (request, result) => {ReservationController.updateReservation(request, result)});
+router.delete('/:id', (request, result) => {ReservationController.deleteReservation(request, result)});
 
 module.exports = router;

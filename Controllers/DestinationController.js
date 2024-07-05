@@ -41,6 +41,16 @@ class DestinationController {
             result.json({error : "Une erreur est survenue lors de la modification de la destination"})
         }
     }
+
+    async deleteDestination(request, result){
+        try {
+            const destination = await DestinationService.deleteDestination(request.params.id);
+            result.json(destination);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la suppression de la destination"})
+        }
+    }
 }
 
 module.exports = new DestinationController();

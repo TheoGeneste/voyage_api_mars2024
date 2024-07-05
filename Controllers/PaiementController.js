@@ -40,6 +40,16 @@ class PaiementController{
             result.json({error : "Une erreur est survenue lors de la modification du paiement"})
         }
     }
+
+    async deletePaiement(request, result){
+        try {
+            const paiement = await PaiementService.deletePaiement(request.params.id);
+            result.json(paiement);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la suppression du paiement"})
+        }
+    }
 }
 
 module.exports = new PaiementController();

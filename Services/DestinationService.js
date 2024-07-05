@@ -21,6 +21,10 @@ class DestinationService {
             }
         })
     }
+
+    async deleteDestination(id){
+        return await Destination.destroy({where:{DE_ID : id}});
+    }
     
 }
 

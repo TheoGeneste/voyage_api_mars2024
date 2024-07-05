@@ -21,6 +21,10 @@ class ReservationService{
             }
         })
     }
+
+    async deleteReservation(id){
+        return await Reservation.destroy({where : {RE_ID : id}})
+    }
 }
 
 module.exports = new ReservationService();

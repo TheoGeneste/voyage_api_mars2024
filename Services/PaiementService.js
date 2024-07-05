@@ -20,6 +20,10 @@ class PaiementService {
             }
         })
     }
+
+    async deletePaiement(id){
+        return await Paiement.destroy({where : {PA_ID : id}})
+    }
     
 }
 

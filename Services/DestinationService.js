@@ -13,6 +13,15 @@ class DestinationService {
     async addDestination(destination){
         return await Destination.create(destination);
     }
+
+    async updateDestinaiton(id, destination){
+        return await Destination.update(destination, {
+            where : {
+                DE_ID : id
+            }
+        })
+    }
+    
 }
 
 module.exports = new DestinationService();

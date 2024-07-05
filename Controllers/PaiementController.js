@@ -30,6 +30,16 @@ class PaiementController{
             result.json({error : "Une erreur est survenue lors de l'ajout du paiement"})
         }
     }
+
+    async updatePaiement(request, result){
+        try {
+            const paiement = await PaiementService.updatePaiement(request.params.id, request.body);
+            result.json(paiement);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la modification du paiement"})
+        }
+    }
 }
 
 module.exports = new PaiementController();

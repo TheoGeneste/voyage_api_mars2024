@@ -13,6 +13,14 @@ class ClientService {
     async addClient(client){
         return await Client.create(client);
     }
+
+    async updateClient(id, client){
+        return await Client.update(client, {
+            where : {
+                CL_ID : id
+            }
+        })
+    }
 }
 
 module.exports = new ClientService();

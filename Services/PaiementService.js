@@ -12,6 +12,15 @@ class PaiementService {
     async addPaiement(paiement){
         return await Paiement.create(paiement);
     }
+
+    async updatePaiement(id, paiement){
+        return await Paiement.update(paiement, {
+            where : {
+                PA_ID : id
+            }
+        })
+    }
+    
 }
 
 module.exports = new PaiementService();

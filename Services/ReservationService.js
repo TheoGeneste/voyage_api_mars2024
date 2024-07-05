@@ -3,11 +3,11 @@ const Reservation = require("../Models/Reservation");
 class ReservationService{
 
     async getAllReservation(){
-        return await Reservation.findAll();
+        return await Reservation.findAll({include : ['client', 'destination']});
     }
 
     async getReservationByID(reservationID){
-        return await Reservation.findByPk(reservationID);
+        return await Reservation.findByPk(reservationID, {include : ['client', 'destination', 'paiements']});
     }
 
     async addReservation(reservation){

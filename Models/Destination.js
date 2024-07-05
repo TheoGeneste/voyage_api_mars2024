@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require('../Config/Sequelize');
+const Categorie = require('./Categorie');
 
 class Destination extends Model{
 
@@ -31,7 +32,11 @@ Destination.init({
     },
     CA_ID : {
         type : DataTypes.INTEGER,
-        allowNull : false
+        allowNull : false,
+        references : {
+            model : 'Categorie',
+            key : "CA_ID"
+        }
     }
 },{
     sequelize,
@@ -39,5 +44,9 @@ Destination.init({
     tableName : "destinations",
     timestamps : false
 })
+
+Categorie.hasMany(Destination, {as :'destinations', foreignKey: 'CA_ID'});
+Destination.belongsTo(Categorie, {as : 'categorie', foreignKey : 'CA_ID'});
+
 
 module.exports = Destination;

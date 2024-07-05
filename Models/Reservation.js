@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require('../Config/Sequelize');
+const Client = require("./Client");
+const Destination = require('./Destination');
 
 class Reservation extends Model{
 
@@ -25,11 +27,19 @@ Reservation.init({
     },
     DE_ID : {
         type : DataTypes.INTEGER,
-        allowNull : false
+        allowNull : false,
+        references : {
+            model : "Destination",
+            key : "DE_ID"
+        }
     },
     CL_ID : {
         type : DataTypes.INTEGER,
-        allowNull : false
+        allowNull : false,
+        references : {
+            model : "Client",
+            key : "CL_ID"
+        }
     }
 }, {
     sequelize,
@@ -37,5 +47,12 @@ Reservation.init({
     tableName : "reservations",
     timestamps : false
 })
+
+Client.hasMany(Reservation, {as : 'reservations', foreignKey: "CL_ID"});
+Reservation.belongsTo(Client, {as : 'client', foreignKey  : 'CL_ID'});
+
+Destination.hasMany(Reservation, {as : 'reservations', foreignKey : 'DE_ID'});
+Reservation.belongsTo(Destination, {as : 'destination' , foreignKey : 'DE_ID'});
+
 
 module.exports = Reservation;

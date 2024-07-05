@@ -7,7 +7,7 @@ class ClientService {
     }
 
     async getClientByID(clientId){
-        return await Client.findByPk(clientId);
+        return await Client.findByPk(clientId, {include : 'reservations'});
     }
 
     async addClient(client){

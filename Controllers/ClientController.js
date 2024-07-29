@@ -51,6 +51,18 @@ class ClientController {
             result.json({error : "Une erreur est survenue lors de la suppresion du client"})
         }
     }
+    
+    async login(request, result){
+        try {
+            // Destructuration
+            const {email, password} = request.body;
+            const user = await ClientService.login(email, password);
+            result.json(user);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la connexion"})
+        }
+    }
 
 }
 

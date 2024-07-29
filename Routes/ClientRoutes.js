@@ -9,5 +9,6 @@ router.get("/:clientID", (request, result) => {ClientController.getClientByID(re
 router.post("/", (request, result) =>{ClientController.addClient(request,result)});
 router.patch("/:id", (request, result) => {ClientController.updateClient(request,result)});
 router.delete("/:id", (request, result) => {ClientController.deleteClient(request,result)});
+router.post('/login', (request, result) => {ClientController.login(request,result)});
 
 module.exports = router;

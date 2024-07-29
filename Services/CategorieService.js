@@ -6,7 +6,7 @@ class CategorieService {
     }
 
     async getCategorieByID(categorieID){
-        return await Categorie.findByPk(categorieID);
+        return await Categorie.findByPk(categorieID, {include : "destinations"});
     }
 
     async addCategorie(categorie){

@@ -22,6 +22,7 @@ CREATE TABLE Clients(
    CL_Ville VARCHAR(150),
    CL_Mail VARCHAR(255) NOT NULL,
    CL_Telephone CHAR(13),
+   CL_Password TEXT NOT NULL,
    PRIMARY KEY(CL_ID),
    UNIQUE(CL_Mail),
    UNIQUE(CL_Telephone)

@@ -1,4 +1,5 @@
 const ClientService = require('../Services/ClientService');
+const AuthenticateController = require('./AuthenticateController');
 
 class ClientController {
 
@@ -57,7 +58,7 @@ class ClientController {
             // Destructuration
             const {email, password} = request.body;
             const user = await ClientService.login(email, password);
-            result.json(user);
+            result.json({token : AuthenticateController.generateToken(user)});
         } catch (error) {
             result.status(500);
             result.json({error : "Une erreur est survenue lors de la connexion"})
